@@ -9,9 +9,11 @@ public class Pythagorean {
         double hypotenuse = Math.sqrt(Math.pow(legA, 2) + Math.pow(legB, 2));
 
         return hypotenuse;
+    }
 
-        // the hypotenuse is the side across from the right angle.
-        // calculate the value of c given legA and legB
+
+    public void doStuff(){
+        // ??
     }
 }
 
