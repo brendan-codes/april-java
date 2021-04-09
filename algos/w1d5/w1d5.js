@@ -75,6 +75,29 @@ class SLL {
 
     // if data is contained within the current list, delete it.
     delete(data) {
+        var runner = this.head;
+        var prev = null;
+
+        if (runner !== null && runner.data == val) {
+            this.head = runner.next;
+            this.length--;
+            return;
+        }
+
+        while (runner && runner.data !== val) {
+            prev = runner;
+            runner = runner.next;
+        }
+
+        if (runner === null) {
+            return;
+        }
+        //runner is now our node to be deleted
+        prev.next = runner.next;
+        this.length--;
+    }
+
+    delete2(val) {
         // create a runner
         let runner = this.head;
         // check if head is empty
@@ -99,29 +122,6 @@ class SLL {
             // otherwise traverse
             runner = runner.next;
         }
-    }
-
-    delete2(val) {
-        var runner = this.head;
-        var prev = null;
-
-        if (runner !== null && runner.data == val) {
-            this.head = runner.next;
-            this.length--;
-            return;
-        }
-
-        while (runner && runner.data !== val) {
-            prev = runner;
-            runner = runner.next;
-        }
-
-        if (runner === null) {
-            return;
-        }
-        //runner is now our node to be deleted
-        prev.next = runner.next;
-        this.length--;
     }
 
     size() { // 0(1)
