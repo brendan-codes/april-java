@@ -20,7 +20,25 @@ class DLList {
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // conisder the edge case where you do not find the target
-    prepend(target, node) {}
+    prepend(target, node) {
+        let runner = this.head;
+        if (this.head.data == target) {
+            node.next = this.head;
+            this.head.prev = node;
+            this.head = node;
+            return;
+        }
+        while (runner.next) {
+            if (runner.next.data == target) {
+                node.next = runner.next;
+                node.prev = runner;
+                runner.next = node;
+                node.next.prev = node;
+                return;
+            }
+            runner = runner.next;
+        }
+    }
 
     // push to head
     addHead(node) {
@@ -66,4 +84,25 @@ class DLList {
 
     // pop from head
     removeHead() {}
+
+
+
 }
+
+// ----- FOR TESTING -----  //
+
+// function readDLL(DLL) {
+//     let runner = DLL.head;
+//     while (runner) {
+//         console.log(runner.data);
+//         runner = runner.next;
+//     }
+// }
+
+// function readDLLBackwards(DLL) {
+//     let runner = DLL.tail;
+//     while (runner) {
+//         console.log(runner.data);
+//         runner = runner.prev;
+//     }
+// }

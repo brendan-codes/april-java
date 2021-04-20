@@ -37,12 +37,17 @@ class DLList {
                         // Link other nodes to this new node
                         curNode.prev.next = node;
                         curNode.prev = node;
-                        break; // Exit while loop assuming only before first instance of target
+                        return; // Exit while loop assuming only before first instance of target
                     }
                 }
             }
         }
     }
+
+    // 1. readability
+    // 2. correct output
+    // 3. performance
+    // 4. refactoring/code cleaniness
 
     // cleaner, less indented
     prependClean(target, node) {
@@ -74,9 +79,9 @@ class DLList {
             node.next = this.head;
             this.head = node;
 
-            this.tail.next = node;
-            node.prev = this.tail;
-            this.tail = node;
+            // this.tail.next = node;
+            // node.prev = this.tail;
+            // this.tail = node;
         }
     }
 

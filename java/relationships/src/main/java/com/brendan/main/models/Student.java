@@ -123,6 +123,14 @@ public class Student {
 	public void setSchool(School school) {
 		this.school = school;
 	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
 	
 	
 

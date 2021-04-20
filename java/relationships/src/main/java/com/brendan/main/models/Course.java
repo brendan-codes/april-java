@@ -16,6 +16,10 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+
+// course.students.add()
+// save course
+
 @Entity
 @Table(name="courses")
 public class Course {

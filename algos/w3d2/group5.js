@@ -42,7 +42,12 @@ class DLList {
 
     // push to head
     addHead(node) {
-        if (this.isEmpty()) this.tail = node;else {node.next = this.head;this.head.prev = node;}this.head = node;
+        if (this.isEmpty()) this.tail = node;
+        else {
+            node.next = this.head;
+            this.head.prev = node;
+        }
+        this.head = node;
     }
 
     // pop from tail

@@ -20,7 +20,19 @@ class DLList {
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // conisder the edge case where you do not find the target
-    prepend(target, node) {}
+    prepend(target, node) {
+        let runner = this.head;
+        if (runner != null){
+            if (runner.data == target){
+                runner.prev = node;
+                node.next = runner;
+                node.prev = runner.prev;
+                runner.prev.next = node;
+            } else {
+                runner = runner.next
+            }
+        }
+    }
 
     // push to head
     addHead(node) {
