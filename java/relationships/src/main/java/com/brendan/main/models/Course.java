@@ -12,42 +12,32 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="students")
-public class Student {
+@Table(name="courses")
+public class Course {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Size(min=2, max=30, message="Name must be between 2-30")
-	private String firstName;
-	
-	@Size(min=2, max=30, message="Name must be between 2-30")
-	private String lastName;
-	
-	@Min(5)
-	private int age;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="school_id")
-	private School school;
+	private String name;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "students_in_courses",
-			joinColumns = @JoinColumn(name = "student_id"),
-			inverseJoinColumns = @JoinColumn(name = "course_id")
+			joinColumns = @JoinColumn(name = "course_id"),
+			inverseJoinColumns = @JoinColumn(name = "student_id")
 	)
-	private List<Course> courses;
+	private List<Student> students;
 
+	public Course() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Column(updatable=false)
 	private Date createdAt;
 	
@@ -63,11 +53,6 @@ public class Student {
 		this.updatedAt = new Date();
 	}
 
-
-	public Student() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -76,28 +61,20 @@ public class Student {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public List<Student> getStudents() {
+		return students;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 	public Date getCreatedAt() {
@@ -116,14 +93,5 @@ public class Student {
 		this.updatedAt = updatedAt;
 	}
 
-	public School getSchool() {
-		return school;
-	}
-
-	public void setSchool(School school) {
-		this.school = school;
-	}
 	
-	
-
 }

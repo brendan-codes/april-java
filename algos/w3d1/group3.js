@@ -28,10 +28,25 @@ class DLList {
             //add could also just be a void method too, so it can also just return nothing. In the end, it's really up to you.
         // no problem
         } else { //I think I'm getting confused with the head and tail so please correct me if I'm wrong
-            //for this one, you know the head has something in there
-            // so you have to make it so both the current head, and the
+            //for this else, you know the head has something in there
+            // so you have to make it so both the current head's previous points to the new node, and the new node's next points to the current head
+            //and with that, the nodes are all linked, you just need to point the head to the new node
 
         }
+    }
+    addHead(node) {
+        // what if the list is empty?
+        // what if there are many nodes?
+        if(this.isEmpty()){
+            this.head = node;
+            this.tail = node;
+        }
+        else{
+            node.next = this.head;
+            this.head.prev = node;
+            this.head = node;
+        }
+
     }
 
     // pop from tail
