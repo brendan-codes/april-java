@@ -12,6 +12,7 @@
 <body>
 <h1>Wellcome to Schools and Students</h1>
 <a href="/schools">New Schoo</a> | <a href="/students">New Students</a>
-
+<h1>Welcome, <c:out value="${user.email}" /></h1>
+<a href="/logout">Logout</a>
 </body>
 </html>

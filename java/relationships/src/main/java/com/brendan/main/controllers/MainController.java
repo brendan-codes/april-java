@@ -25,10 +25,10 @@ public class MainController {
 	private StudentService studentService;
 	
 	
-	@GetMapping("/")
-	public String index() {
-		return "index.jsp";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "index.jsp";
+//	}
 	
 	@GetMapping("/schools")
 	public String showNewSchool(@ModelAttribute School school, Model model) {
