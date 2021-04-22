@@ -1,5 +1,6 @@
 package com.brendan.main.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +38,15 @@ public class MainController {
 	}
 	
 	@PostMapping("/schools")
-	public String createSchool(@Valid @ModelAttribute School school, BindingResult res, Model model) {
+	public String createSchool(@Valid @ModelAttribute School school, BindingResult res, Model model, HttpSession session) {
 		if(res.hasErrors()) {
 			model.addAttribute("schools", schoolService.allSchools());
 			return "newSchool.jsp";
 		}else {
+			Long id = (Long) session.getAttribute("user_id");
+			// go to user service
+			// get user object
+			// school.setCreator(user)
 			schoolService.createSchool(school);
 			return "redirect:/schools";
 		}
@@ -61,6 +66,9 @@ public class MainController {
 			model.addAttribute("students", studentService.allStudents());
 			return "newStudent.jsp";
 		}else {
+			if(student.getSchool().getStudents().size() > 9) {
+				// shcool is too big, validations and fail
+			}
 			studentService.createStudent(student);
 			return "redirect:/students";
 		}
